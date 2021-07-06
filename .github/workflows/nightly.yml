@@ -38,4 +38,4 @@ jobs:
         with:
           name: |
             ${{ matrix.name }} Nightly
-          path: build/bin
+          path: ${{ runner.workspace }}/build/bin

@@ -1,0 +1,41 @@
+name: nightly
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    strategy:
+      matrix:
+        include:
+          - name: Linux
+            os: ubuntu-latest
+          - name: Windows
+            os: windows-latest
+    name: Build for ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+
+      - name: Get CMake
+        uses: symbitic/install-cmake@master
+
+      - name: Build
+        uses: ashutoshvarma/action-cmake-build@master
+        with:
+          build-dir: ${{ runner.workspace }}/build
+          # will set the CC & CXX for cmake
+          cc: gcc
+          cxx: g++
+          build-type: Release
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: |
+            ${{ matrix.name }} Nightly
+          path: build/bin

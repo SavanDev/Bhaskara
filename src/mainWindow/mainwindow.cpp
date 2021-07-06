@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     MainWindow::setWindowIcon(QIcon(":/app/img/logo.png"));
 
-    QString titleBar = QString("%1 [Build: %2]").arg(MainWindow::windowTitle()).arg(VERSION_REVISION);
+    QString titleBar = MainWindow::windowTitle();
 
     MainWindow::setWindowTitle(titleBar);
     ui->numA->setValidator( new QDoubleValidator() );
@@ -57,7 +57,7 @@ void MainWindow::on_actionAbout_triggered()
     short vMinor = VERSION_MINOR;
     short vRevision = VERSION_REVISION;
 
-    QString message = QString("SD Bhaskara\nMade by SavanDev\nVersion %1.%2\nBuild: %3").arg(vMajor).arg(vMinor).arg(vRevision);
+    QString message = QString("SD Bhaskara\nMade by SavanDev\nVersion %1.%2.%3").arg(vMajor).arg(vMinor).arg(vRevision);
 
     QDialog *about = new QDialog(0, 0);
 

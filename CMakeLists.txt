@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Bhaskara VERSION 0.1.507 LANGUAGES CXX)
+project(Bhaskara VERSION 0.1.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
